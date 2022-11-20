@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/assets/exit_button.gd" type="Script" id=1]
+[ext_resource path="res://scenes/assets/fps_counter.gd" type="Script" id=2]
+
+[sub_resource type="InputEventAction" id=3]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
+
+[node name="DEBUG" type="CanvasLayer"]
+
+[node name="FpsCounter" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -57.0
+margin_right = 40.0
+margin_bottom = -43.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "FPS:"
+script = ExtResource( 2 )
+
+[node name="ExitButton" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -39.0
+margin_right = 120.0
+shortcut = SubResource( 4 )
+text = "EXIT"
+script = ExtResource( 1 )

@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://map/shaders/map_base_3d.shader" type="Shader" id=1]
+[ext_resource path="res://map/asia/heightmap.bmp" type="Texture" id=2]
+[ext_resource path="res://scenes/assets/DEBUG.tscn" type="PackedScene" id=3]
+
+[sub_resource type="PlaneMesh" id=5]
+
+[sub_resource type="OpenSimplexNoise" id=3]
+octaves = 6
+period = 72.4
+persistence = 0.992
+
+[sub_resource type="NoiseTexture" id=4]
+flags = 15
+width = 1024
+height = 1024
+noise = SubResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 1 )
+shader_param/sea_level = 0.37
+shader_param/mountains_level = 0.39
+shader_param/coastline_thickness = 0.01
+shader_param/coast_thickness = 0.002
+shader_param/coastline_color = Color( 0.105882, 0.152941, 0.462745, 1 )
+shader_param/coast_color = Color( 0, 0, 0, 1 )
+shader_param/mountains_color = Color( 0.886275, 0.886275, 0.886275, 1 )
+shader_param/terrain_color = Color( 1, 1, 1, 1 )
+shader_param/water_color = Color( 0, 0, 0.4, 1 )
+shader_param/heightmap = ExtResource( 2 )
+shader_param/noise_texture = SubResource( 4 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="DEBUG" parent="." instance=ExtResource( 3 )]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.781368, 0.624071, 0, -0.624071, 0.781368, 0, 0.595425, 0.0984166 )

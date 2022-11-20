@@ -1,0 +1,17 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D grid_texture;
+
+vec2 grid(vec2 uv, float columns, float rows) 
+{
+	return fract(vec2(uv.x * columns, uv.y * rows));
+}
+
+void fragment() 
+{
+	vec2 grid = grid(UV, 5.0, 6.0);
+    COLOR = texture(grid_texture, grid);
+}"
