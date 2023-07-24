@@ -1,7 +1,6 @@
 shader_type canvas_item;
 
 uniform float sea_level = 0.37;
-uniform float mountains_level = 0.39;
 uniform float coastline_thickness = 0.02;
 uniform float coast_thickness : hint_range(0.001, 3.0, 0.00001) = 0.001;
 
@@ -27,12 +26,12 @@ void fragment()
 	
 	if (height.r > sea_level) 
 	{
-		//color = terrain_color;
-		
-//		if (terrain.r > coast_thickness)
-//		{
-//			color = coast_color;
-//		}
+		color = terrain_color;
+
+		if (terrain.r > coast_thickness)
+		{
+			color = coast_color;
+		}
 		
 	}
 	else 

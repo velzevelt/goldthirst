@@ -22,9 +22,11 @@ rect_scale = Vector2( 20, 20 )
 [node name="MapBase" parent="Map" instance=ExtResource( 5 )]
 
 [node name="TextureRect" type="TextureRect" parent="Map"]
+visible = false
 modulate = Color( 1, 1, 1, 0.2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
 
 [node name="Background" parent="." instance=ExtResource( 8 )]
+visible = false
